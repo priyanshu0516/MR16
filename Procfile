@@ -1,0 +1,1 @@
+web: gunicorn mr16project.wsgi

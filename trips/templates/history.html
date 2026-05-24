@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trip History</title>
+
+    <style>
+
+        body{
+            background:#111827;
+            color:white;
+            font-family:Arial;
+            text-align:center;
+        }
+
+        .card{
+            background:white;
+            color:black;
+            width:350px;
+            margin:20px auto;
+            padding:20px;
+            border-radius:15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Trip History</h1>
+
+{% for trip in trips %}
+
+<div class="card">
+
+<h2>{{ trip.from_city }} → {{ trip.to_city }}</h2>
+
+<p>👥 People: {{ trip.people }}</p>
+
+<p>📅 Date: {{ trip.trip_date }}</p>
+
+<p>💰 Budget: ₹{{ trip.total_budget }}</p>
+
+<a href="/delete/{{ trip.id }}/">
+    <button style="
+        background:red;
+        color:white;
+        border:none;
+        padding:8px 14px;
+        border-radius:8px;
+        cursor:pointer;
+    ">
+        Delete
+    </button>
+</a>
+
+<a href="/edit/{{ trip.id }}/">
+    <button style="
+        background:green;
+        color:white;
+        border:none;
+        padding:8px 14px;
+        border-radius:8px;
+        cursor:pointer;
+    ">
+        Edit
+    </button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</body>
+
+</html>

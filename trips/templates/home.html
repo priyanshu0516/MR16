@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>MR16</title>
+
+    <style>
+
+        body{
+            background-color: #111827;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+            font-family: Arial;
+        }
+
+        h1{
+            font-size: 60px;
+        }
+
+        input{
+            width: 250px;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            margin: 10px;
+        }
+
+        button{
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        .trip-card{
+    background: white;
+    color: black;
+    width: 320px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+}
+
+.trip-card h2{
+    margin-bottom: 20px;
+}
+
+.trip-card p{
+    font-size: 18px;
+    margin: 12px 0;
+}
+.banner{
+    width: 80%;
+    max-width: 800px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+    </style>
+
+</head>
+
+<body>
+<img src="{% static 'images/road.jpg' %}" class="banner">
+    <h1>MR16</h1>
+
+    <h3>Plan Your India Road Trips</h3>
+
+    <form method="POST">
+      {% csrf_token %}
+
+        <input list="cities" name="from_city" placeholder="From City">
+
+<input list="cities" name="to_city" placeholder="To City">
+
+<datalist id="cities">
+{% for city in cities %}
+<option value="{{ city }}">
+{% endfor %}
+</datalist>
+
+        <input type="number" name="people" placeholder="Number of Travelers">
+
+        <br>
+
+        <input type="date" name="trip_date">
+
+        <br><br>
+
+        <button type="submit">Plan Trip</button>
+
+     <a href="/history/" class="btn">View Trip History</a>
+
+        {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">
+        <button>Logout</button>
+    </a>
+{% else %}
+    <a href="{% url 'login' %}">
+        <button>Login</button>
+    </a>
+{% endif %}
+
+    </form>
+{% if trip %}
+
+<div class="trip-card">
+
+    {% if city_image %}
+<img src="/static/{{ city_image }}"
+     width="250"
+     style="border-radius:10px;">
+{% endif %}
+
+    <h2>{{ trip }}</h2>
+
+    <p>📍 Distance: {{ distance }}</p>
+
+    <p>🕒 Travel Time: {{ time }}</p>
+
+    <p>🌤 Weather: {{ weather }}</p>
+
+    <p>⛽ Fuel Cost: ₹{{ fuel_cost }}</p>
+
+<p>🏨 Hotel Cost: ₹2000</p>
+
+<p>🍽 Food Cost: ₹1000</p>
+
+<p><b>💰 Total Budget: ₹{{ total_budget }}</b></p>
+
+    <p>👥 Cost Per Person: ₹{{ per_person }}</p>
+
+    <p>📅 Trip Date: {{ trip_date }}</p>
+
+    <h3>📍 Places To Visit</h3>
+
+{% for place in places %}
+    <p>• {{ place }}</p>
+{% endfor %}
+
+</div>
+
+{% endif %}
+</body>
+
+</html>

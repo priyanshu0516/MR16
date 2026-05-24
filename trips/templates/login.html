@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MR16 Login</title>
+
+    <style>
+
+        body{
+            background:#111827;
+            color:white;
+            text-align:center;
+            font-family:Arial;
+            padding-top:100px;
+        }
+
+        .box{
+            background:white;
+            color:black;
+            width:350px;
+            margin:auto;
+            padding:30px;
+            border-radius:20px;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px;
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>MR16 Login</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

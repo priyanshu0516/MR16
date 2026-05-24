@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Trip</title>
+
+    <style>
+        body{
+            background:#111827;
+            color:white;
+            text-align:center;
+            font-family:Arial;
+            padding-top:100px;
+        }
+
+        .box{
+            background:white;
+            color:black;
+            width:350px;
+            margin:auto;
+            padding:30px;
+            border-radius:20px;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px;
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Edit Trip</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+<input type="number"
+name="people"
+value="{{trip.people}}">
+
+<input type="date"
+name="trip_date"
+value="{{trip.trip_date|date:'Y-m-d'}}">
+
+<br><br>
+
+<button type="submit">
+Save Changes
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
