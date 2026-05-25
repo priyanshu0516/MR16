@@ -47,6 +47,15 @@ def home(request):
 
         trip = f"{from_city} to {to_city}"
 
+        if request.user.is_authenticated and request.method == "POST":
+            Trip.objects.create(
+                user=request.user,
+                from_city=from_city,
+                to_city=to_city,
+                people=people,
+                trip_date=trip_date
+            )
+
 
         # Route database
 
@@ -92,15 +101,7 @@ def home(request):
 
         total_budget = fuel_cost + hotel_cost + food_cost
         per_person = total_budget / people
-        if request.user.is_authenticated:
-            Trip.objects.create(
-                user=request.user,
-                from_city=from_city,
-                to_city=to_city,
-                people=people,
-                trip_date=trip_date,
-                # other fields...
-            )
+
 
     else:
         fuel_cost = None
@@ -123,15 +124,15 @@ def home(request):
         'weather': weather,
     })
 
-    @login_required
-    def history(request):
-        trips = Trip.objects.filter(
-            user=request.user
-        ).order_by('-id')
+@login_required
+def history(request):
+    trips = Trip.objects.filter(
+        user=request.user
+    ).order_by('-id')
 
-        return render(request, 'history.html', {
-            'trips': trips
-        })
+    return render(request, 'history.html', {
+        'trips': trips
+    })
 
 
 @login_required
