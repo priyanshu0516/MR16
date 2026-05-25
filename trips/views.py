@@ -132,7 +132,7 @@ def home(request):
         return render(request, 'history.html', {
             'trips': trips
         })
-        )
+
 
 @login_required
 def delete_trip(request, trip_id):
