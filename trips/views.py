@@ -123,15 +123,15 @@ def home(request):
         'weather': weather,
     })
 
-@login_required
-def history(request):
-    if request.user.is_authenticated:
-        Trip.objects.create(
-            user=request.user,
-            from_city=from_city,
-            to_city=to_city,
-            people=people,
-            trip_date=trip_date
+    @login_required
+    def history(request):
+        trips = Trip.objects.filter(
+            user=request.user
+        ).order_by('-id')
+
+        return render(request, 'history.html', {
+            'trips': trips
+        })
         )
 
 @login_required
