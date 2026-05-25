@@ -20,7 +20,9 @@ def home(request):
     places = []
     trip_date = None
     per_person = None
+    weather = None
     city_image = None
+
 
     if request.method == "POST":
 
