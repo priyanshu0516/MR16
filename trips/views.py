@@ -92,14 +92,15 @@ def home(request):
 
         total_budget = fuel_cost + hotel_cost + food_cost
         per_person = total_budget / people
-        Trip.objects.create(
-            user=request.user,
-            from_city=from_city,
-            to_city=to_city,
-            people=people,
-            trip_date=trip_date,
-            total_budget=total_budget
-        )
+        if request.user.is_authenticated:
+            Trip.objects.create(
+                user=request.user,
+                from_city=from_city,
+                to_city=to_city,
+                people=people,
+                trip_date=trip_date,
+                # other fields...
+            )
 
     else:
         fuel_cost = None
