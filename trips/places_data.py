@@ -21,5 +21,23 @@ PLACES = {
         "India Gate",
         "Red Fort",
         "Qutub Minar"
+    ],
+
+    "chhatarpur":[
+        "Khajuraho",
+        "Dhubela",
+        "Bhimkund"
+    ],
+
+    "mumbai":[
+        "Marine Drive",
+        "Gateway of India",
+        "Taj Palace"
+    ],
+
+    "pune":[
+        "Sinhagad fort",
+        "Shaniwar wada",
+        "Koregaon park"
     ]
 }
