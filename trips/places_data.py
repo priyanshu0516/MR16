@@ -42,8 +42,8 @@ PLACES = {
     ],
 
     "indore":[
-        "Rajwada Palace"
-        "Khajrana Ganesh Temple"
+        "Rajwada Palace",
+        "Khajrana Ganesh Temple",
         "56 Dukan"
 ]
 }
