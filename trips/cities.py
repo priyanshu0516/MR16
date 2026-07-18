@@ -8,5 +8,6 @@ CITIES = [
     "Mumbai",
     "Pune",
     "Lucknow",
-    "Kanpur"
+    "Kanpur",
+    "Indore"
 ]

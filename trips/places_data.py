@@ -39,5 +39,12 @@ PLACES = {
         "Sinhagad fort",
         "Shaniwar wada",
         "Koregaon park"
-    ]
+    ],
+
+    "indore":[
+        "Rajwada Palace"
+        "Khajrana Ganesh Temple"
+        "56 Dukan"
+]
 }
+

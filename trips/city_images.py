@@ -6,4 +6,5 @@ CITY_IMAGES = {
     "pune": "images/pune.jpg",
     "chhatarpur": "images/chhatarpur.jpg",
     "mumbai": "images/mumbai.jpg",
+    "indore": "indore.jpg",
 }
