@@ -99,13 +99,13 @@
      <a href="/history/" class="btn">View Trip History</a>
 
         {% if user.is_authenticated %}
-    <a href="{% url 'logout' %}">
-        <button>Logout</button>
-    </a>
+   <a href="{% url 'logout' %}">
+    <button type="button">Logout</button>
+</a>
 {% else %}
     <a href="{% url 'login' %}">
-        <button>Login</button>
-    </a>
+    <button type="button">Login</button>
+</a>
 {% endif %}
 
     </form>
